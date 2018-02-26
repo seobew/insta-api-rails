@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def own_media
-		#render json: {"own_media": "own_media"}
+		render json: @user.media.last
   end
 
   def individual
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   end
 
   def individual_media
-		#render json: {"individual_media": "individual_media"}
+		render json: @user.media.last
   end
 
   private
