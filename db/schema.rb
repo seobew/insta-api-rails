@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180226070331) do
+ActiveRecord::Schema.define(version: 20180226074111) do
+
+  create_table "media", force: :cascade do |t|
+    t.string "image"
+    t.string "description"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_media_on_user_id"
+  end
 
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
