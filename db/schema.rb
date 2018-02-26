@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180226074111) do
+ActiveRecord::Schema.define(version: 20180226090210) do
 
   create_table "media", force: :cascade do |t|
     t.string "image"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20180226074111) do
     t.integer "total_followee"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "access_token"
   end
 
 end
