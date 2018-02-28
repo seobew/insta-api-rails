@@ -41,7 +41,7 @@ group :development, :test do
 	gem 'database_cleaner'
 end
 
-group :development do
+group :production do
 	gem 'faker'
 end
 
