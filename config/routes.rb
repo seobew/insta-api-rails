@@ -13,5 +13,7 @@ Rails.application.routes.draw do
 
   get 'users/self/requested-by', to: 'users#self_requested_by'
 
+  get 'media/:media_id', to: 'media#show'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
