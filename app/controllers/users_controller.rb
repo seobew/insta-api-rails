@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :verify_authenticate
-	before_action :set_current_user, only: [:own, :own_media]
+	before_action :set_current_user, only: [:own, :own_media, :self_follow, :self_followed_by, :self_requested_by]
 	before_action :set_individual_user, only: [:individual, :individual_media]
   def own
 		render json: @user, except: [:access_token]
@@ -16,6 +16,24 @@ class UsersController < ApplicationController
 
   def individual_media
 		render json: @user.media.last
+  end
+
+  def self_follow
+    followees = @user.follower_relationship
+    @followees = followees.select{|r| r.accepted}
+    render json: @followees
+  end
+
+  def self_followed_by
+    followers = @user.followee_relationship
+    @accepted_followers = followers.select{|r| r.accepted}
+    render json: @accepted_followers
+  end
+
+  def self_requested_by
+    followers = @user.followee_relationship
+    @waiting_followers = followers.select{|r| r.accepted==false}
+    render json: @waiting_followers
   end
 
   private
